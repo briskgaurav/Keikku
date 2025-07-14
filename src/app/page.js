@@ -1,48 +1,55 @@
 "use client"
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Navbar from "./Navbar/Navbar";
 import Hero from "./Home/Hero";
 import Sequence from "./Home/Sequence";
 import Features from "./Home/Features";
 import MeetKeikku from "./Home/MeetKeikku";
 import Info from "./Home/Info";
-import Experience from "./Home/Experience";
-import Swiper from "./Home/Swiper";
-import BuildFromTheGround from "./Home/BuildFromTheGround";
-import Innovation from "./Home/Innovation";
-import Innovation2 from "./Home/Innovation2";
-import Innovation3 from "./Home/Innovation3";
-import DiscoverOurApp from "./Home/DiscoverOurApp";
-import Footer from "./Footer/Footer";
-import Sequence2 from "./Home/Sequence2";
 import UseMobile from "./Hooks/IsMobile";
-import Innovation3Mobile from "./Home/Innovation3Mobile";
 
+// Lazy load components that appear below the fold
+const Experience = lazy(() => import("./Home/Experience"));
+const Swiper = lazy(() => import("./Home/Swiper"));
+const BuildFromTheGround = lazy(() => import("./Home/BuildFromTheGround"));
+const Innovation = lazy(() => import("./Home/Innovation"));
+const Innovation2 = lazy(() => import("./Home/Innovation2"));
+const Innovation3 = lazy(() => import("./Home/Innovation3"));
+const Innovation3Mobile = lazy(() => import("./Home/Innovation3Mobile"));
+const DiscoverOurApp = lazy(() => import("./Home/DiscoverOurApp"));
+const Footer = lazy(() => import("./Footer/Footer"));
+const Sequence2 = lazy(() => import("./Home/Sequence2"));
 
-export default function page() {
+export default function Page() {
   const isMobile = UseMobile();
+
   return (
     <>
-      <div className="h-fit relative  w-full ">
+      <div className="h-fit relative w-full">
         <Sequence />
         <Navbar />
         <Hero />
         <Features />
         <div className="relative h-fit w-full">
-          <Sequence2 /> 
+          <Suspense fallback={null}>
+            <Sequence2 />
+          </Suspense>
         </div>
       </div>
+
       <MeetKeikku />
       <Info />
-      <Experience />
-      <Swiper />
-      <BuildFromTheGround />
-      <Innovation />
-      <Innovation2 />
-      {isMobile ? <Innovation3Mobile /> : <Innovation3 />}
-      <DiscoverOurApp />
-      <Footer />
-
+      
+      <Suspense fallback={null}>
+        <Experience />
+        <Swiper />
+        <BuildFromTheGround />
+        <Innovation />
+        <Innovation2 />
+        {isMobile ? <Innovation3Mobile /> : <Innovation3 />}
+        <DiscoverOurApp />
+        <Footer />
+      </Suspense>
     </>
   );
 }

@@ -103,7 +103,7 @@ export default function Sequence2() {
   }, [images]);
 
   return (
-    <div id="Sequence2" className="h-screen -mt-[100vh] absolute z-[999] opacity-0 top-0 right-0 w-full">
+    <div id="Sequence2" className="h-screen overflow-hidden -mt-[100vh] absolute z-[999] opacity-0 top-0 right-0 w-full">
       <canvas 
         ref={canvasRef} 
         className="w-[68vw] h-auto max-sm:w-[200vw] object-contain translate-y-[25%] max-sm:translate-y-[55%] translate-x-[43%] max-sm:translate-x-[-8%]" 
