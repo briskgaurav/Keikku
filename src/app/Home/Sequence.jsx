@@ -24,14 +24,25 @@ export default function Sequence() {
   const [images, setImages] = useState([]);
   const frame = useRef({ current: 0 });
 
-  // 🖼️ Preload images
+  // 🖼️ Preload images (FIXED)
   useEffect(() => {
-    const frames = getFrameIndices(startFrame, endFrame).map((frameNum) => {
+    const frames = getFrameIndices(startFrame, endFrame);
+    const loadedImages = [];
+    let loadedCount = 0;
+
+    frames.forEach((frameNum, index) => {
       const img = new Image();
       img.src = getImagePath(frameNum);
-      return img;
+
+      img.onload = () => {
+        loadedCount++;
+        loadedImages[index] = img;
+
+        if (loadedCount === frames.length) {
+          setImages(loadedImages); // Set only after all images loaded
+        }
+      };
     });
-    setImages(frames);
   }, []);
 
   // 🎞️ Scroll-controlled canvas animation
@@ -41,15 +52,11 @@ export default function Sequence() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // Set canvas size based on first image aspect ratio and screen size
     const aspectRatio = images[0].naturalWidth / images[0].naturalHeight;
     const isMobile = window.innerWidth <= 768;
-    
-    // Adjust canvas width based on screen size
     canvas.width = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.5;
     canvas.height = canvas.width / aspectRatio;
 
-    // Handle resize
     const handleResize = () => {
       const newIsMobile = window.innerWidth <= 768;
       canvas.width = newIsMobile ? window.innerWidth * 1.0 : window.innerWidth * 0.5;
@@ -59,14 +66,13 @@ export default function Sequence() {
 
     window.addEventListener('resize', handleResize);
 
-    // ✅ Draw first frame immediately
     frame.current.current = 0;
+
     const render = () => {
       const index = Math.floor(frame.current.current);
       const img = images[index];
       if (img) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Draw image maintaining aspect ratio
         const drawWidth = canvas.width;
         const drawHeight = drawWidth / aspectRatio;
         ctx.drawImage(img, 0, 0, drawWidth, drawHeight);
