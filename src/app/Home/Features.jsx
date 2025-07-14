@@ -28,8 +28,8 @@ export default function Features() {
         scrollTrigger: {
           trigger: "#features",
           start: "top top",
-          end: "+8000 top",
-          // markers: true,
+          end: isMobile ? "+4000 top" :  "+7000 top",
+          markers: true,
           pin: true,
           scrub: true,
           onLeave: () => {
@@ -70,6 +70,7 @@ export default function Features() {
           y: isMobile ? "-200%" : "-350%",
           stagger: isMobile ? 0.1 : 0.4,
           duration: 3,
+          opacity: isMobile ? 0 : 1,
         },
         "<+.2"
       );
@@ -87,8 +88,8 @@ export default function Features() {
         ".feature-card2",
         {
           y: "-200%",
-          stagger: 0.1,
-          duration: 4,
+          stagger: isMobile ? 0.1 : 0.4,
+          duration: 3,
           onComplete: () => {
             gsap.to("#pulse", {
               display: "hidden",
@@ -111,7 +112,9 @@ export default function Features() {
         {data.map((item, index) => (
           <div
             key={index}
-            className={`p-[1vw] max-sm:p-[3vw] scale-[.9] feature-card opacity-0 translate-y-[200%] py-[1.5vw]  bg-white w-[12.5%] max-sm:w-[30%] rounded-full flex items-center justify-center gap-[1vw] h-[44vh] max-sm:h-[25vh] flex-col 
+            className={`p-[1vw] max-sm:p-[3vw] scale-[.9] feature-card opacity-0 max-sm:opacity-100 py-[1.5vw]  bg-white w-[12.5%] max-sm:w-[30%] rounded-full translate-y-[200%]  max-sm:translate-y-[200%] flex items-center justify-center ${
+              index === 1 ? "translate-y-[100%]" : ""
+            } gap-[1vw] h-[44vh] max-sm:h-[25vh] flex-col 
             }`}
           >
             <div className="h-full overflow-hidden rounded-full w-full">
@@ -130,11 +133,11 @@ export default function Features() {
           </div>
         ))}
       </div>
-      <div className=" z-[100] feature-card2 translate-y-[200%] opacity-0  absolute top-0 left-0 flex items-center justify-between p-[8vw] max-sm:p-[2.5vw] h-full w-full ">
+      <div className=" z-[100] feature-card2 max-md:hidden translate-y-[100%] opacity-0  absolute top-0 left-0 flex items-center justify-between p-[8vw] max-sm:p-[2.5vw] h-full w-full ">
         {data.map((item, index) => (
           <div
             key={index}
-            className={`p-[1vw] max-sm:p-[3vw] scale-[.9]  py-[1.5vw] bg-white w-[12.5%] max-sm:w-[30%] rounded-full flex items-center justify-center gap-[1vw] h-[44vh] max-sm:h-[25vh] flex-col ${
+            className={`p-[1vw] max-sm:p-[3vw] scale-[.9] py-[1.5vw] bg-white w-[12.5%] max-sm:w-[30%] rounded-full flex items-center justify-center gap-[1vw] h-[44vh] max-sm:h-[25vh] flex-col ${
               index === 1 ? "translate-y-[100%]" : ""
             }`}
           >

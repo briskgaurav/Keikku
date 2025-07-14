@@ -99,7 +99,7 @@ export default function Hero() {
           <div className="w-full h-fit ">
             <h1 className="text-[5.5vw]  max-sm:px-[5vw] max-sm:text-[12vw] hero-text pt-[2vw] font-bold text-center bg-gradient-to-b from-[#14bcff] tracking-tight max-sm:leading-[1] leading-[1.2] via-[#14bcff] to-[#224aff] text-transparent bg-clip-text">
             Don’t miss a{" "}
-              <span className="w-full max-sm:hidden h-full relative">
+              <span className="w-full h-full relative">
                 <div
                   ref={beatBlur}
                   className="bg-gradient-to-b scale-0 from-purple-400 via-blue-600 to-[#224aff] opacity-0 z-[-1] absolute top-0 left-0 w-[15vw] translate-x-[-15%] blur-md h-full"
