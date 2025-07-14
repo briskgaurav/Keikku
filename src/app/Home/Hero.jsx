@@ -97,7 +97,7 @@ export default function Hero() {
         <Header />
         <div className="h-screen  w-full flex flex-col items-center justify-between">
           <div className="w-full h-fit ">
-            <h1 className="text-[5.5vw] hero-text pt-[2vw] font-bold text-center bg-gradient-to-b from-[#14bcff] tracking-tight leading-[1.2] via-[#14bcff] to-[#224aff] text-transparent bg-clip-text">
+            <h1 className="text-[5.5vw]  max-sm:px-[5vw] max-sm:text-[12vw] hero-text pt-[2vw] font-bold text-center bg-gradient-to-b from-[#14bcff] tracking-tight max-sm:leading-[1] leading-[1.2] via-[#14bcff] to-[#224aff] text-transparent bg-clip-text">
             Don’t miss a{" "}
               <span className="w-full h-full relative">
                 <div
@@ -117,11 +117,11 @@ export default function Hero() {
               Keikku, our next generation digital stethoscope
             </p>
           </div>
-          <div className="w-[55%] h-fit flex flex-col items-center gap-[1vw] ">
-            <p className="text-[.8vw] text-[#808699]/30 font-bold font-DMM">
+          <div className="w-[55%] max-sm:w-[90%] h-fit flex flex-col items-center gap-[1vw] ">
+            <p className="text-[.8vw] max-sm:text-[2.5vw] max-sm:tracking-wider max-sm:py-[2vw] text-[#808699]/30 font-bold font-DMM">
               AS SEEN IN
             </p>
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-center max-sm:h-full max-sm:justify-center max-sm:gap-[2vw] justify-between w-full">
               {[
                 {
                   url: "https://keikku.health/_ipx/f_webp&s_1700x527/imgs/header-logo-dark-1.png",
@@ -147,12 +147,12 @@ export default function Hero() {
                 <div
                   style={{ width: item.width }}
                   key={index}
-                  className={` opacity-80 h-[6vw]`}
+                  className={` opacity-80 max-sm:h-full max-sm:w-full h-[6vw]`}
                 >
                   <img
                     src={item.url}
                     alt=""
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto max-sm:h-auto max-sm:object-cover object-cover"
                   />
                 </div>
               ))}

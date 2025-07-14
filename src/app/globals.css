@@ -20,6 +20,7 @@ body {
   color: var(--foreground);
   font-family:var(--font-Mori);
   overflow: hidden;
+  
 }
 
 .paragraph{
@@ -28,6 +29,12 @@ body {
    color: #808699;
    font-weight: 600;
    letter-spacing: .5px;
+}
+
+@media (max-width: 768px) {
+  .paragraph{
+    font-size: 3.8vw;
+  }
 }
 
 

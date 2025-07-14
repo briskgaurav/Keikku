@@ -120,7 +120,7 @@ export default function DiscoverOurApp() {
     TextAnimation("discoverApp");
   }, []);
   return (
-    <div className="h-fit w-full relative bg-[#12131D] text-[#D2C2E6] py-[5vw] px-[15vw] max-sm:px-[5vw] max-sm:py-[10vw]">
+    <div className="h-fit w-full relative overflow-hidden bg-[#12131D] text-[#D2C2E6] py-[5vw] px-[15vw] max-sm:px-[5vw] max-sm:py-[15vw]">
       <h2 id="discoverApp" className="text-[5vw] max-sm:text-center max-sm:text-[10vw]  font-bold">
         Discover our app
       </h2>
@@ -163,7 +163,7 @@ export default function DiscoverOurApp() {
           </div>
         ))}
       </div>
-      <div className="w-full h-fit py-[3vw]  flex items-start justify-center flex-col">
+      <div className="w-full h-fit py-[3vw]   flex items-start justify-center flex-col">
         <p className="text-[2.7vw] max-sm:px-[5vw] max-sm:text-[6vw] mb-[2vw] w-[20%] leading-[1.1] font-bold">
           Product Specifications
         </p>

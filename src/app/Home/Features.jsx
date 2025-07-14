@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import UseMobile from "../Hooks/IsMobile";
 gsap.registerPlugin(ScrollTrigger);
 
 const data = [
@@ -18,6 +19,8 @@ const data = [
 ];
 
 export default function Features() {
+
+  const isMobile = UseMobile();
   useEffect(() => {
     const ctx = gsap.context(() => {
       const features = document.getElementById("features");
@@ -65,8 +68,8 @@ export default function Features() {
       tl.to(
         ".feature-card",
         {
-          y: "-200%",
-          stagger: 0.1,
+          y: isMobile ? "-200%" : "-350%",
+          stagger:isMobile ? 0.1 : 0.4,
           duration: 3,
         },
         "<+.2"

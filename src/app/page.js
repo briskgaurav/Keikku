@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Navbar from "./Navbar/Navbar";
 import Hero from "./Home/Hero";
@@ -14,9 +15,12 @@ import Innovation3 from "./Home/Innovation3";
 import DiscoverOurApp from "./Home/DiscoverOurApp";
 import Footer from "./Footer/Footer";
 import Sequence2 from "./Home/Sequence2";
+import UseMobile from "./Hooks/IsMobile";
+import Innovation3Mobile from "./Home/Innovation3Mobile";
 
 
 export default function page() {
+  const isMobile = UseMobile();
   return (
     <>
       <div className="h-fit relative  w-full ">
@@ -25,7 +29,7 @@ export default function page() {
         <Hero />
         <Features />
         <div className="relative h-fit w-full">
-          <Sequence2 />
+          <Sequence2 /> 
         </div>
       </div>
       <MeetKeikku />
@@ -35,7 +39,7 @@ export default function page() {
       <BuildFromTheGround />
       <Innovation />
       <Innovation2 />
-      <Innovation3 />
+      {isMobile ? <Innovation3Mobile /> : <Innovation3 />}
       <DiscoverOurApp />
       <Footer />
 

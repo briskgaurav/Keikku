@@ -41,10 +41,23 @@ export default function Sequence2() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // Set canvas size based on first image aspect ratio
+    // Set canvas size based on first image aspect ratio and screen size
     const aspectRatio = images[0].naturalWidth / images[0].naturalHeight;
-    canvas.width = window.innerWidth * 0.7; // 70vw to match parent width
+    const isMobile = window.innerWidth <= 768;
+    
+    // Adjust canvas width based on screen size
+    canvas.width = isMobile ? window.innerWidth * 0.9 : window.innerWidth * 0.7;
     canvas.height = canvas.width / aspectRatio;
+
+    // Handle resize
+    const handleResize = () => {
+      const newIsMobile = window.innerWidth <= 768;
+      canvas.width = newIsMobile ? window.innerWidth * 1.0 : window.innerWidth * 0.7;
+      canvas.height = canvas.width / aspectRatio;
+      render();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     // ✅ Draw first frame immediately
     frame.current.current = 0;
@@ -67,11 +80,10 @@ export default function Sequence2() {
         scrollTrigger: {
           trigger: "#Sequence2",
           start: "top top",
-          end: "+=130%", // Sufficient scroll range
+          end: "+=130%",
           scrub: true,
           pin: true,
-          // markers: true,
-          invalidateOnRefresh: true, // ✅ Recalculate on resize/refresh
+          invalidateOnRefresh: true,
         },
       });
     });
@@ -79,12 +91,16 @@ export default function Sequence2() {
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
       gsapCtx.revert();
+      window.removeEventListener('resize', handleResize);
     };
   }, [images]);
 
   return (
-    <div id="Sequence2" className="h-screen -mt-[100vh] absolute z-[999] opacity-0 top-0 right-0 w-[67vw]">
-      <canvas ref={canvasRef} className="w-full h-auto object-contain translate-y-[25%] translate-x-[-5%]" />
+    <div id="Sequence2" className="h-screen -mt-[100vh] overflow-hidden absolute z-[999] opacity-0 top-0 right-0 w-full ">
+      <canvas 
+        ref={canvasRef} 
+        className="w-full h-auto  max-sm:w-[200vw] object-contain translate-y-[25%] max-sm:translate-y-[55%] translate-x-[-5%] max-sm:translate-x-[-8%]" 
+      />
     </div>
   );
 }

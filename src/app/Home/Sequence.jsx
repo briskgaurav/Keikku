@@ -41,10 +41,23 @@ export default function Sequence() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // Set canvas size based on first image aspect ratio
+    // Set canvas size based on first image aspect ratio and screen size
     const aspectRatio = images[0].naturalWidth / images[0].naturalHeight;
-    canvas.width = window.innerWidth * 0.5;
+    const isMobile = window.innerWidth <= 768;
+    
+    // Adjust canvas width based on screen size
+    canvas.width = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.5;
     canvas.height = canvas.width / aspectRatio;
+
+    // Handle resize
+    const handleResize = () => {
+      const newIsMobile = window.innerWidth <= 768;
+      canvas.width = newIsMobile ? window.innerWidth * 1.0 : window.innerWidth * 0.5;
+      canvas.height = canvas.width / aspectRatio;
+      render();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     // ✅ Draw first frame immediately
     frame.current.current = 0;
@@ -70,9 +83,9 @@ export default function Sequence() {
         scrollTrigger: {
           trigger: "body",
           start: "top top",
-          end: "+=140%", // Sufficient scroll range
+          end: "+=140%",
           scrub: true,
-          invalidateOnRefresh: true, // ✅ Recalculate on resize/refresh
+          invalidateOnRefresh: true,
         },
       });
       gsap.to("#pulse", {
@@ -101,24 +114,25 @@ export default function Sequence() {
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
       gsapCtx.revert();
+      window.removeEventListener('resize', handleResize);
     };
   }, [images]);
 
   return (
     <div
       id="Sequence"
-      className="sticky opacity-100 top-0 h-screen w-full flex z-[50] items-end justify-center translate-x-[2%] translate-y-[-12vw] pointer-events-none"
+      className="sticky opacity-100 top-0 h-screen w-full flex z-[50] items-end justify-center translate-x-[2%] max-sm:translate-x-0 translate-y-[-12vw] max-sm:translate-y-[-70vw] pointer-events-none"
     >
       <canvas
         id="canvas1"
         ref={canvasRef}
-        className="w-[22vw] translate-y-[10%] scale-95 h-auto object-contain"
+        className="w-[22vw] max-sm:w-[70vw] translate-y-[10%] max-sm:translate-y-[5%] scale-95 h-auto object-contain"
       />
-      <div className="absolute top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 w-[50%] h-[20%] blur-[5vw] z-[-1] bg-blue-500/50"></div>
+      <div className="absolute top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 max-sm:translate-y-[150%] w-[50%] max-sm:w-[80%] h-[20%] blur-[5vw] max-sm:blur-[20vw] z-[-1] bg-blue-500/50"></div>
 
       <div
         id="pulse"
-        className="w-[14.5vw] hidden scale-0 h-[14.5vw] bg-blue-700/20 rounded-full absolute top-[76%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
+        className="w-[14.5vw] max-sm:w-[40vw] hidden scale-0 h-[14.5vw] max-sm:h-[40vw] bg-blue-700/20 rounded-full absolute top-[76%] max-sm:top-[83%]  left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
       >
         <div className="w-[50%] h-[50%] bg-blue-700/20 rounded-full"></div>
       </div>
