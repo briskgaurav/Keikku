@@ -132,7 +132,7 @@ export default function Sequence() {
           start: "50% center",
           end: "bottom center", 
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
     });
