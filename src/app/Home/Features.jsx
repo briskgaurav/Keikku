@@ -29,7 +29,7 @@ export default function Features() {
           trigger: "#features",
           start: "top top",
           end: isMobile ? "+4000 top" :  "+7000 top",
-          markers: true,
+          // markers: true,
           pin: true,
           scrub: true,
           onLeave: () => {

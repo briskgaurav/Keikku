@@ -105,7 +105,7 @@ useEffect(() => {
           start: '20% top',
           end: 'bottom top',
         //   scrub: true,
-          markers: true,
+          // markers: true,
           onUpdate: (self) => {
             const progress = self.progress;
             mat.uniforms.uWaveStrength.value = Math.sin(progress * Math.PI) * 3; 
