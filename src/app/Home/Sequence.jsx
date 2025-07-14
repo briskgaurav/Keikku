@@ -1,0 +1,127 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const startFrame = 0;
+const endFrame = 150;
+const step = 3;
+
+const getFrameIndices = (start, end) =>
+  Array.from(
+    { length: Math.floor((end - start) / step) + 1 },
+    (_, i) => start + i * step
+  );
+
+const getImagePath = (frameNumber) =>
+  `/sequence/keikku-${String(frameNumber)}.webp`;
+
+export default function Sequence() {
+  const canvasRef = useRef(null);
+  const [images, setImages] = useState([]);
+  const frame = useRef({ current: 0 });
+
+  // 🖼️ Preload images
+  useEffect(() => {
+    const frames = getFrameIndices(startFrame, endFrame).map((frameNum) => {
+      const img = new Image();
+      img.src = getImagePath(frameNum);
+      return img;
+    });
+    setImages(frames);
+  }, []);
+
+  // 🎞️ Scroll-controlled canvas animation
+  useEffect(() => {
+    if (!canvasRef.current || images.length === 0) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    // Set canvas size based on first image aspect ratio
+    const aspectRatio = images[0].naturalWidth / images[0].naturalHeight;
+    canvas.width = window.innerWidth * 0.5;
+    canvas.height = canvas.width / aspectRatio;
+
+    // ✅ Draw first frame immediately
+    frame.current.current = 0;
+    const render = () => {
+      const index = Math.floor(frame.current.current);
+      const img = images[index];
+      if (img) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Draw image maintaining aspect ratio
+        const drawWidth = canvas.width;
+        const drawHeight = drawWidth / aspectRatio;
+        ctx.drawImage(img, 0, 0, drawWidth, drawHeight);
+      }
+    };
+
+    render();
+
+    const gsapCtx = gsap.context(() => {
+      gsap.to(frame.current, {
+        current: images.length - 1,
+        ease: "none",
+        onUpdate: render,
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "+=140%", // Sufficient scroll range
+          scrub: true,
+          invalidateOnRefresh: true, // ✅ Recalculate on resize/refresh
+        },
+      });
+      gsap.to("#pulse", {
+        scale: 1,
+        opacity: 0,
+        duration: 1,
+        ease: "linear",
+        repeat: -1,
+      });
+
+      gsap.to("#pulse", {
+        display: "flex",
+        duration: 1,
+        ease: "linear",
+        delay: 1,
+        scrollTrigger: {
+          trigger: "#features",
+          start: "50% center",
+          end: "bottom center",
+          scrub: true,
+          markers: true,
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsapCtx.revert();
+    };
+  }, [images]);
+
+  return (
+    <div
+      id="Sequence"
+      className="sticky opacity-100 top-0 h-screen w-full flex z-[50] items-end justify-center translate-x-[2%] translate-y-[-12vw] pointer-events-none"
+    >
+      <canvas
+        id="canvas1"
+        ref={canvasRef}
+        className="w-[22vw] translate-y-[10%] scale-95 h-auto object-contain"
+      />
+      <div className="absolute top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 w-[50%] h-[20%] blur-[5vw] z-[-1] bg-blue-500/50"></div>
+
+      <div
+        id="pulse"
+        className="w-[14.5vw] hidden scale-0 h-[14.5vw] bg-blue-700/20 rounded-full absolute top-[76%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
+      >
+        <div className="w-[50%] h-[50%] bg-blue-700/20 rounded-full"></div>
+      </div>
+    </div>
+  );
+}

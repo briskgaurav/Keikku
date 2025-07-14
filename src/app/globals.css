@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --background: #12131D;
+  --foreground: #ffffff;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 1025px;
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-DMM: var(--font-DMM);
+  --font-Mori: var(--font-Mori);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:var(--font-Mori);
+  overflow: hidden;
+}
+
+.paragraph{
+   text-align: center;
+   font-size: 1.3vw;
+   color: #808699;
+   font-weight: 600;
+   letter-spacing: .5px;
+}
+
+
