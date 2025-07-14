@@ -19,7 +19,6 @@ const data = [
 ];
 
 export default function Features() {
-
   const isMobile = UseMobile();
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -34,17 +33,17 @@ export default function Features() {
           pin: true,
           scrub: true,
           onLeave: () => {
-            gsap.set('#Sequence',{
-              opacity:0
-            })
+            gsap.set("#Sequence", {
+              opacity: 0,
+            });
             gsap.set("#Sequence2", {
               opacity: 1,
             });
           },
           onEnterBack: () => {
-            gsap.set('#Sequence',{
-              opacity:1
-            })
+            gsap.set("#Sequence", {
+              opacity: 1,
+            });
             gsap.set("#Sequence2", {
               opacity: 0,
             });
@@ -61,7 +60,7 @@ export default function Features() {
       });
       tl.to(".feature-card", {
         opacity: 1,
-        scale:1,
+        scale: 1,
         stagger: 0.1,
         duration: 2,
       });
@@ -69,7 +68,7 @@ export default function Features() {
         ".feature-card",
         {
           y: isMobile ? "-200%" : "-350%",
-          stagger:isMobile ? 0.1 : 0.4,
+          stagger: isMobile ? 0.1 : 0.4,
           duration: 3,
         },
         "<+.2"
@@ -78,7 +77,7 @@ export default function Features() {
         ".feature-card2",
         {
           opacity: 1,
-          scale:1,
+          scale: 1,
           stagger: 0.1,
           duration: 2,
         },
@@ -94,7 +93,7 @@ export default function Features() {
             gsap.to("#pulse", {
               display: "hidden",
               duration: 1,
-              
+
               ease: "linear",
             });
           },
@@ -117,6 +116,7 @@ export default function Features() {
           >
             <div className="h-full overflow-hidden rounded-full w-full">
               <video
+                playsInline
                 src={item.video}
                 autoPlay
                 muted
@@ -144,6 +144,9 @@ export default function Features() {
                 autoPlay
                 muted
                 loop
+                preload="auto"
+                loading="lazy"
+                playsInline
                 className="h-full rounded-full w-full object-cover"
               />
             </div>
@@ -158,6 +161,8 @@ export default function Features() {
           src="https://burospaces1.fra1.cdn.digitaloceanspaces.com/keikku/circles-start.mp4#t=0.5"
           autoPlay
           muted
+          preload="auto"
+          loading="lazy"
           loop
           playsInline
           className="h-full w-full object-cover"

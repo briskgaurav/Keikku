@@ -49,6 +49,8 @@ export default function Innovation() {
             autoPlay
             muted
             loop
+            preload="auto"
+            loading="lazy"
             playsInline
             className="w-full h-full object-cover"
           />

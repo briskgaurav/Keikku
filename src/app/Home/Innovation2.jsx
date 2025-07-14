@@ -51,6 +51,9 @@ export default function Innovation2() {
             <video
               src="https://burospaces1.fra1.cdn.digitaloceanspaces.com/keikku/features-feedback.mp4#t=0.01"
               autoPlay
+              preload="auto"
+              loading="lazy"
+              playsInline
               muted
               loop
               className="w-full h-auto object-cover"
@@ -63,6 +66,9 @@ export default function Innovation2() {
           <video
             src="https://burospaces1.fra1.cdn.digitaloceanspaces.com/keikku/features-slider.mp4#t=0.01"
             autoPlay
+            playsInline
+            preload="auto"
+            loading="lazy"
             muted
             loop
             className="w-[15vw] max-sm:w-[30vw] h-[50%] object-contain"

@@ -118,6 +118,7 @@ export default function Swiper() {
                   <iframe
                     src={`https://player.vimeo.com/video/${id}?controls=1&autoplay=0&muted=0&loop=0`}
                     frameBorder="0"
+                    
                     allow="fullscreen; picture-in-picture"
                     allowFullScreen
                     style={{
