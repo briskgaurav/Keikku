@@ -46,7 +46,7 @@ export default function Sequence2() {
     const isMobile = window.innerWidth <= 768;
     
     // Adjust canvas width based on screen size
-    canvas.width = isMobile ? window.innerWidth * 0.9 : window.innerWidth * 0.7;
+    canvas.width = isMobile ? window.innerWidth * 0.9 : window.innerWidth * 0.6;
     canvas.height = canvas.width / aspectRatio;
 
     // Handle resize
@@ -96,10 +96,10 @@ export default function Sequence2() {
   }, [images]);
 
   return (
-    <div id="Sequence2" className="h-screen -mt-[100vh] overflow-hidden absolute z-[999] opacity-0 top-0 right-0 w-full ">
+    <div id="Sequence2" className="h-screen -mt-[100vh] absolute z-[999] opacity-0 top-0  right-0 w-full ">
       <canvas 
         ref={canvasRef} 
-        className="w-full h-auto  max-sm:w-[200vw] object-contain translate-y-[25%] max-sm:translate-y-[55%] translate-x-[-5%] max-sm:translate-x-[-8%]" 
+        className="w-[68vw] h-auto   max-sm:w-[200vw] object-contain translate-y-[25%] max-sm:translate-y-[55%] translate-x-[43%] max-sm:translate-x-[-8%]" 
       />
     </div>
   );
