@@ -7,14 +7,13 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { TextAnimation } from "../Components/Animation";
+import UseMobile from "../Hooks/IsMobile";
 
 export default function Swiper() {
-
+  const isMobile = UseMobile();
   useEffect(() => {
-    TextAnimation("unlock-swiper")
-  }, [])
-  
-
+    TextAnimation("unlock-swiper");
+  }, []);
 
   const swiperRef = useRef(null);
 
@@ -35,7 +34,6 @@ export default function Swiper() {
     "1011338622",
     "1014352509",
   ];
-
 
   return (
     <div className="h-fit w-full py-[5vw] max-sm:py-[15vw] bg-[#1E1328] flex items-center justify-center">
@@ -109,22 +107,20 @@ export default function Swiper() {
             onSlideChange={(swiper) => {
               setActiveIndex(swiper.realIndex);
             }}
-            
             className="w-full"
           >
             {videos.map((id, index) => (
               <SwiperSlide className="cursor-pointer" key={index}>
-                <div className="rounded-[1.5vw] max-sm:h-fit max py-[10vw] h-[90vh] w-full overflow-hidden">
+                <div className="rounded-[1.5vw] max-sm:h-fit max py-[10vw] h-[90vh] w-full flex items-center justify-center overflow-hidden">
                   <iframe
                     src={`https://player.vimeo.com/video/${id}?controls=1&autoplay=0&muted=0&loop=0`}
                     frameBorder="0"
-                    
                     allow="fullscreen; picture-in-picture"
                     allowFullScreen
                     style={{
-                      borderRadius: "1.5vw",
-                      width: "100%",
-                      height: "100%",
+                      height: isMobile ? "100%" : "190%",
+                      width: isMobile ? "100%" : "190%",
+                      borderRadius: "3vw",
                       objectFit: "cover",
                     }}
                   />
@@ -147,9 +143,7 @@ export default function Swiper() {
                 ? "w-[1.5vw] max-sm:w-[5vw]"
                 : "w-[1vw] max-sm:w-[4vw]";
 
-              const colorClass = isActive
-                ? "bg-white"
-                : "bg-zinc-700";
+              const colorClass = isActive ? "bg-white" : "bg-zinc-700";
 
               return (
                 <div

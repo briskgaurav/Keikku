@@ -24,25 +24,31 @@ export default function Sequence() {
   const [images, setImages] = useState([]);
   const frame = useRef({ current: 0 });
 
-  // 🖼️ Preload images (FIXED)
+  // 🖼️ Preload images
   useEffect(() => {
     const frames = getFrameIndices(startFrame, endFrame);
-    const loadedImages = [];
-    let loadedCount = 0;
+    const isMobile = window.innerWidth <= 768;
 
-    frames.forEach((frameNum, index) => {
-      const img = new Image();
-      img.src = getImagePath(frameNum);
+    if (isMobile) {
+      setImages(frames.map(() => null)); // Placeholder array
+    } else {
+      const loadedImages = [];
+      let loadedCount = 0;
 
-      img.onload = () => {
-        loadedCount++;
-        loadedImages[index] = img;
+      frames.forEach((frameNum, index) => {
+        const img = new Image();
+        img.src = getImagePath(frameNum);
 
-        if (loadedCount === frames.length) {
-          setImages(loadedImages); // Set only after all images loaded
-        }
-      };
-    });
+        img.onload = () => {
+          loadedCount++;
+          loadedImages[index] = img;
+
+          if (loadedCount === frames.length) {
+            setImages(loadedImages);
+          }
+        };
+      });
+    }
   }, []);
 
   // 🎞️ Scroll-controlled canvas animation
@@ -52,7 +58,7 @@ export default function Sequence() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    const aspectRatio = images[0].naturalWidth / images[0].naturalHeight;
+    const aspectRatio = images[0]?.naturalWidth / images[0]?.naturalHeight || 1;
     const isMobile = window.innerWidth <= 768;
     canvas.width = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.5;
     canvas.height = canvas.width / aspectRatio;
@@ -70,7 +76,20 @@ export default function Sequence() {
 
     const render = () => {
       const index = Math.floor(frame.current.current);
-      const img = images[index];
+      let img = images[index];
+      
+      if (!img && window.innerWidth <= 768) {
+        // Lazy load only when needed (mobile)
+        const frames = getFrameIndices(startFrame, endFrame);
+        img = new Image();
+        img.src = getImagePath(frames[index]);
+        img.onload = () => {
+          images[index] = img;
+          render();
+        };
+        return;
+      }
+      
       if (img) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const drawWidth = canvas.width;
@@ -88,12 +107,13 @@ export default function Sequence() {
         onUpdate: render,
         scrollTrigger: {
           trigger: "body",
-          start: "top top",
+          start: "top top", 
           end: "+=140%",
           scrub: true,
           invalidateOnRefresh: true,
         },
       });
+
       gsap.to("#pulse", {
         scale: 1,
         opacity: 0,
@@ -110,7 +130,7 @@ export default function Sequence() {
         scrollTrigger: {
           trigger: "#features",
           start: "50% center",
-          end: "bottom center",
+          end: "bottom center", 
           scrub: true,
           markers: true,
         },
@@ -134,11 +154,11 @@ export default function Sequence() {
         ref={canvasRef}
         className="w-[22vw] max-sm:w-[70vw] translate-y-[10%] max-sm:translate-y-[5%] scale-95 h-auto object-contain"
       />
-      <div className="absolute top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 max-sm:translate-y-[150%] w-[50%] max-sm:w-[80%] h-[20%] blur-[5vw] max-sm:blur-[20vw] z-[-1] bg-blue-500/50"></div>
+      <div className="absolute max-sm:hidden top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 max-sm:translate-y-[150%] w-[50%] max-sm:w-[80%] h-[20%] blur-[5vw] max-sm:blur-[20vw] z-[-1] bg-blue-500/50"></div>
 
       <div
         id="pulse"
-        className="w-[14.5vw] max-sm:w-[40vw] hidden scale-0 h-[14.5vw] max-sm:h-[40vw] bg-blue-700/20 rounded-full absolute top-[76%] max-sm:top-[83%]  left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
+        className="w-[14.5vw] max-sm:w-[40vw] hidden scale-0 h-[14.5vw] max-sm:h-[40vw] bg-blue-700/20 rounded-full absolute top-[76%] max-sm:top-[83%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
       >
         <div className="w-[50%] h-[50%] bg-blue-700/20 rounded-full"></div>
       </div>
