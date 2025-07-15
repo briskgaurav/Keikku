@@ -91,8 +91,8 @@ function Scene() {
         setScale(2);
         setYPos(-5);
       } else if (width < 1024) { // tablet
-        setScale(2);
-        setYPos(-1);
+        setScale(3);
+        setYPos(-5);
       } else { // desktop
         setScale(2.5);
         setYPos(-3);

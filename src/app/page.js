@@ -7,6 +7,8 @@ import Features from "./Home/Features";
 import MeetKeikku from "./Home/MeetKeikku";
 import Info from "./Home/Info";
 import UseMobile from "./Hooks/IsMobile";
+import UseTablet from "./Hooks/UseTablet";
+import InnovationTablet from "./Home/InnovationTablet";
 
 // Lazy load components that appear below the fold
 const Experience = lazy(() => import("./Home/Experience"));
@@ -22,6 +24,7 @@ const Sequence2 = lazy(() => import("./Home/Sequence2"));
 
 export default function Page() {
   const isMobile = UseMobile();
+  const isTablet = UseTablet();
 
   return (
     <>
@@ -46,7 +49,7 @@ export default function Page() {
         <BuildFromTheGround />
         <Innovation />
         <Innovation2 />
-        {isMobile ? <Innovation3Mobile /> : <Innovation3 />}
+        {isMobile ? <Innovation3Mobile /> : isTablet ? <InnovationTablet /> : <Innovation3 />}
         <DiscoverOurApp />
         <Footer />
       </Suspense>

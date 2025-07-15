@@ -34,16 +34,16 @@ export default function Innovation() {
   }, []);
 
   return (
-    <div className="bg-[#1E1328] relative max-sm:px-[5vw] px-[20vw] w-full h-fit py-[5vw]">
+    <div className="bg-[#1E1328] relative max-sm:px-[5vw] max-md:py-[0vw] max-md:px-[5vw] px-[20vw] w-full h-fit py-[5vw]">
       <h2
         id="Text-Animation"
-        className="text-[3.7vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] max-sm:hidden w-[85%] max-sm:w-[95%] bg-clip-text font-bold leading-[1.1]"
+        className="text-[3.7vw] max-md:text-[5vw] max-sm:text-[3.7vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] max-sm:hidden w-[85%] max-sm:w-[95%] max-md:w-[70%] bg-clip-text font-bold leading-[1.1]"
       >
         Keikku, developed at the intersection of innovation and precision
       </h2>
-      <div className="h-screen max-sm:h-[50vh] gap-[1vw] max-sm:flex-col  max-sm:gap-[2vw] items-center justify-center flex w-full">
+      <div className="h-screen max-md:h-[70vh] max-sm:h-[50vh] gap-[1vw] max-md:gap-[2vw] max-md:flex-col max-sm:flex-col max-md:mt-[5vw] max-sm:gap-[2vw] items-center justify-center flex w-full">
         {/* Left Panel with Video */}
-        <div className="h-[90%] max-sm:h-[35%] relative overflow-hidden max-sm:rounded-[4vw] rounded-[1vw] max-sm:w-[100%] w-[60%]">
+        <div className="h-[90%] max-sm:h-[35%] max-md:h-[40%] max-md:w-[100%] relative overflow-hidden max-sm:rounded-[4vw] max-md:rounded-[3vw] rounded-[1vw] max-sm:w-[100%] w-[60%]">
           <video
             src="https://burospaces1.fra1.cdn.digitaloceanspaces.com/keikku/card-video.mp4#t=0.01"
             autoPlay
@@ -54,17 +54,17 @@ export default function Innovation() {
             playsInline
             className="w-full h-full object-cover"
           />
-          <p className="absolute top-[10%] left-1/2 -translate-x-1/2  max-sm:w-full text-center text-[2.5vw] leading-[1.1] max-sm:text-[6vw] text-[#D2C2E6] font-bold">
+          <p className="absolute top-[10%] left-1/2 -translate-x-1/2  max-sm:w-full text-center text-[2.5vw] max-md:text-[4vw] max-md:w-full max-md:text-left max-md:pl-[3vw] leading-[1.1] max-sm:text-[6vw] text-[#D2C2E6] font-bold">
             Active noise cancellation
           </p>
         </div>
 
         {/* Right Panel with Rive and Image */}
-        <div className="h-[90%] max-sm:h-fit flex flex-col max-sm:flex-row gap-[1vw] max-sm:w-full w-[40%] max-sm:gap-[2vw]">
+        <div className="h-[90%] max-md:h-fit max-sm:h-fit flex flex-col max-sm:flex-row max-md:flex-row max-md:w-[100%] gap-[1vw] max-sm:w-full w-[40%] max-sm:gap-[2vw]">
           {/* Rive Animation Block */}
-          <div className="h-[50%] max-sm:h-full max-sm:bg-[#180e22] max-sm:rounded-[4vw] p-[1.5vw] max-sm:p-[4vw] w-full rounded-[1vw]">
+          <div className="h-[50%] max-sm:h-full max-md:h-[80%] max-sm:bg-[#180e22] max-sm:rounded-[4vw]  p-[1.5vw] max-sm:p-[4vw] max-md:p-[4vw] w-full rounded-[1vw]">
             <div className="h-[10%]">
-              <p className="text-[#D2C2E6] max-sm:text-[3vw] font-DMM uppercase text-[.8vw]">
+              <p className="text-[#D2C2E6] max-md:text-[2vw] max-sm:text-[3vw] font-DMM uppercase text-[.8vw]">
                 A Battery that holds
               </p>
             </div>
@@ -77,15 +77,15 @@ export default function Innovation() {
               ></canvas>
             </div>
             <div className="h-[40%]">
-              <p className="text-[2.5vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-semibold text-left max-sm:text-[6vw]">
+              <p className="text-[2.5vw] max-md:text-[4vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-semibold text-left max-sm:text-[6vw]">
                 all heartbeats,
               </p>
-              <p className="text-[2.5vw] max-sm:text-[6vw]  text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-semibold text-right">all week.</p>
+              <p className="text-[2.5vw] max-md:text-[4vw] max-sm:text-[6vw]  text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-semibold text-right">all week.</p>
             </div>
           </div>
 
           {/* Location Image Block */}
-          <div className="h-[50%] max-sm:h-[100%] overflow-hidden relative w-full max-sm:rounded-[4vw] rounded-[1vw]">
+          <div className="h-[50%] max-sm:h-[100%] max-md:h-[80%] overflow-hidden relative w-full max-sm:rounded-[4vw] rounded-[1vw]">
             <div className="w-full h-full">
               <img
                 className="w-full h-full object-cover"
@@ -97,10 +97,10 @@ export default function Innovation() {
             </div>
 
             <div className="w-full h-full p-[1.5vw] max-sm:p-[4vw] absolute top-0 left-0 justify-between flex flex-col">
-              <p className="text-[#D2C2E6] max-sm:text-[3vw] font-DMM uppercase text-[.8vw]">
+              <p className="text-[#D2C2E6] max-md:text-[2.5vw] max-sm:text-[3vw] font-DMM uppercase text-[.8vw]">
                 Last location
               </p>
-              <p className="text-[#D2C2E6] max-sm:text-[3vw] max-sm:w-[100%] max-sm:pb-[3vw] font-semibold leading-[1.1] text-[1.2vw] w-[70%]">
+              <p className="text-[#D2C2E6] max-md:text-[2.5vw] max-md:w-[90%] max-md:pb-[3vw] max-sm:text-[3vw] max-sm:w-[100%] max-sm:pb-[3vw] font-semibold leading-[1.1] text-[1.2vw] w-[70%]">
                 Quickly locate your Keikku, ensuring it's always within reach
                 when you need it most.
               </p>

@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <div
       id="nav-bar"
-      className="fixed overflow-hidden opacity-0 translate-y-[150%] bottom-[5%] max-sm:bottom-[2%] z-[999] left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-[.3vw]"
+        className="fixed max-md:scale-[250%] max-sm:scale-[100%] overflow-hidden opacity-0 translate-y-[150%] bottom-[5%] max-sm:bottom-[2%] z-[999] left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-[.3vw]"
     >
       <div className="w-fit max-sm:hidden flex items-center gap-2 sm:gap-[.8vw] px-3 sm:pl-[.8vw] sm:pr-[.3vw] py-2 sm:py-[0.3vw] bg-white rounded-full">
         <div className="w-[32px] sm:w-[3vw] h-auto">

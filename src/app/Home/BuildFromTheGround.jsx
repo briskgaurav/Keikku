@@ -187,13 +187,13 @@ export default function BuildFromTheGround() {
     <div className="bg-[#1E1328] w-full h-fit py-[5vw]">
       <h2
         id="Text-animation"
-        className="text-[10vw] px-[15vw] max-sm:text-[19vw] max-sm:px-[10vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-bold leading-[1.1]"
+        className="text-[10vw] max-md:text-[12vw] max-md:pl-[15vw] max-md:px-[5vw] px-[15vw] max-sm:text-[19vw] max-sm:px-[10vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-bold leading-[1.1]"
       >
         Built from the ground up
       </h2>
-      <p className="hidden max-sm:flex text-[8vw] w-[80%] mt-[5vw] px-[5vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-bold leading-[1.1]">Keikku, developed at the intersection of innovation and precision</p>
+      <p className="hidden max-sm:flex text-[8vw]  w-[80%] mt-[5vw] px-[5vw] text-transparent bg-gradient-to-b from-[#ffdada] to-[#5f20e4] bg-clip-text font-bold leading-[1.1]">Keikku, developed at the intersection of innovation and precision</p>
 
-      <div className="h-[80vh] max-sm:hidden relative w-full">
+      <div className="h-[80vh] max-md:hidden max-sm:hidden relative w-full">
         <Canvas
           shadows
           dpr={[1, 2]}

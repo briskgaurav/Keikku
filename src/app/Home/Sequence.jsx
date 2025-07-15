@@ -60,12 +60,15 @@ export default function Sequence() {
 
     const aspectRatio = images[0]?.naturalWidth / images[0]?.naturalHeight || 1;
     const isMobile = window.innerWidth <= 768;
-    canvas.width = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.5;
+    const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+    
+    canvas.width = isMobile ? window.innerWidth * 0.8 : isTablet ? window.innerWidth * 0.6 : window.innerWidth * 0.5;
     canvas.height = canvas.width / aspectRatio;
 
     const handleResize = () => {
       const newIsMobile = window.innerWidth <= 768;
-      canvas.width = newIsMobile ? window.innerWidth * 1.0 : window.innerWidth * 0.5;
+      const newIsTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+      canvas.width = newIsMobile ? window.innerWidth * 1.0 : newIsTablet ? window.innerWidth * 0.6 : window.innerWidth * 0.5;
       canvas.height = canvas.width / aspectRatio;
       render();
     };
@@ -147,18 +150,18 @@ export default function Sequence() {
   return (
     <div
       id="Sequence"
-      className="sticky opacity-100 top-0 h-screen w-full flex z-[50] items-end justify-center translate-x-[2%] max-sm:translate-x-0 translate-y-[-12vw] max-sm:translate-y-[-70vw] pointer-events-none"
+      className="sticky opacity-100 top-0 h-screen w-full flex z-[50] items-end justify-center translate-x-[2%] max-md:translate-x-[3%] max-sm:translate-x-0 translate-y-[-12vw]  max-md:translate-y-[-45vw] max-sm:translate-y-[-70vw] pointer-events-none"
     >
       <canvas
         id="canvas1"
         ref={canvasRef}
-        className="w-[22vw] max-sm:w-[70vw] translate-y-[10%] max-sm:translate-y-[5%] scale-95 h-auto object-contain"
+        className="w-[22vw] max-md:w-[50vw] max-sm:w-[70vw] translate-y-[10%] max-md:translate-y-[8%] max-sm:translate-y-[5%] scale-95 h-auto object-contain"
       />
-      <div className="absolute max-sm:hidden top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 max-sm:translate-y-[150%] w-[50%] max-sm:w-[80%] h-[20%] blur-[5vw] max-sm:blur-[20vw] z-[-1] bg-blue-500/50"></div>
+      <div className="absolute max-sm:hidden max-md:blur-[10vw] top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 max-md:translate-y-[100%] max-sm:translate-y-[150%] w-[50%] max-md:w-[65%] max-sm:w-[80%] h-[20%] blur-[5vw] max-sm:blur-[20vw] z-[-1] bg-blue-500/50"></div>
 
       <div
         id="pulse"
-        className="w-[14.5vw] max-sm:w-[40vw] hidden scale-0 h-[14.5vw] max-sm:h-[40vw] bg-blue-700/20 rounded-full absolute top-[76%] max-sm:top-[83%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
+        className="w-[14.5vw] max-md:w-[25vw] max-md:hidden max-sm:w-[40vw] hidden scale-0 h-[14.5vw] max-md:h-[25vw] max-sm:h-[40vw] bg-blue-700/20 rounded-full absolute top-[76%] max-md:top-[80%] max-sm:top-[83%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
       >
         <div className="w-[50%] h-[50%] bg-blue-700/20 rounded-full"></div>
       </div>

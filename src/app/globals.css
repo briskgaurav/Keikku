@@ -3,8 +3,7 @@
 :root {
   --background: #12131D;
   --foreground: #ffffff;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 1025px;
+
 
 }
 
@@ -13,6 +12,8 @@
   --color-foreground: var(--foreground);
   --font-DMM: var(--font-DMM);
   --font-Mori: var(--font-Mori);
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 1025px;
 }
 
 body {
@@ -30,6 +31,11 @@ body {
 }
 
 @media (max-width: 768px) {
+  .paragraph{
+    font-size: 3.8vw;
+  }
+}
+@media (max-width: 1025px) {
   .paragraph{
     font-size: 3.8vw;
   }

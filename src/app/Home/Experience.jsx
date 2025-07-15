@@ -120,21 +120,21 @@ export default function Experience() {
   return (
     <div
       id="experience"
-      className="h-screen max-sm:h-fit max-sm:py-[15vw] w-full flex-col flex items-center justify-center gap-[3vw] max-sm:gap-[8vw]"
+      className="h-screen max-md:h-fit max-sm:h-fit max-sm:py-[15vw] max-md:py-[10vw] w-full flex-col flex items-center justify-center max-md:mt-[10vw] gap-[3vw] max-md:gap-[8vw]  max-sm:gap-[8vw]"
     >
       <div className="w-full flex items-center justify-center h-fit">
         <h2
           id="experience1"
-          className="text-[2.5vw] max-sm:text-[6vw] max-sm:w-[70%] text-center leading-[1.1] font-bold"
+          className="text-[2.5vw] max-sm:text-[6vw] max-md:text-[7vw] max-md:w-[90%] max-sm:w-[70%] text-center leading-[1.1] font-bold"
         >
           Your experience with Keikku
         </h2>
       </div>
-      <div className="flex max-sm:flex-wrap h-fit w-[80%] items-center justify-between max-sm:w-[90%] gap-[1vw]">
+      <div className="flex max-sm:flex-wrap max-md:flex-wrap h-fit w-[80%] items-center justify-between max-sm:w-[90%] max-md:w-[80%] gap-[1vw]">
         {riveFiles.map((_, index) => (
           <div
             key={index}
-            className="h-[50vh] max-sm:h-[30vh] max-sm:w-[31%] experience-boxes w-[48%] p-[1.2vw] max-sm:p-[2.5vw] flex flex-col items-center justify-evenly bg-[#1c1e31] rounded-full"
+            className="h-[50vh] max-md:h-[30vh] max-md:w-[30%] max-md:p-[3vw] max-sm:h-[30vh] max-sm:w-[31%] experience-boxes w-[48%] p-[1.2vw] max-sm:p-[2.5vw] flex flex-col items-center justify-evenly bg-[#1c1e31] rounded-full"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
@@ -147,7 +147,7 @@ export default function Experience() {
               ></canvas>
             </div>
             <div className="w-full h-[30%] py-[1vw] flex items-center justify-center box-txt opacity-0 p-[1vw] ">
-              <p className="text-[.85vw] max-sm:text-[3vw] text-white leading-[1.1] text-center max-sm:font-normal font-semibold">
+              <p className="text-[.85vw] max-sm:text-[3vw] max-md:text-[2vw] text-white leading-[1.1] text-center max-sm:font-normal font-semibold">
                 {captions[index]}
               </p>
             </div>

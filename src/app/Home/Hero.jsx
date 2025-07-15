@@ -96,13 +96,13 @@ export default function Hero() {
       <div id="hero" className="-mt-[100vh]">
         <Header />
         <div className="h-screen  w-full flex flex-col items-center justify-between">
-          <div className="w-full h-fit ">
-            <h1 className="text-[5.5vw]  max-sm:px-[5vw] max-sm:text-[12vw] hero-text pt-[2vw] font-bold text-center bg-gradient-to-b from-[#14bcff] tracking-tight max-sm:leading-[1] leading-[1.2] via-[#14bcff] to-[#224aff] text-transparent bg-clip-text">
+          <div className="w-full h-fit max-md:items-center max-md:justify-center max-md:flex-col max-md:flex max-md:gap-[4vw] ">
+            <h1 className="text-[5.5vw] max-md:text-[10vw] max-md:w-[70%] max-sm:w-[100%] max-sm:px-[5vw] max-sm:text-[12vw] hero-text pt-[2vw] font-bold text-center bg-gradient-to-b from-[#14bcff] tracking-tight max-sm:leading-[1] max-md:leading-[1] leading-[1.2] via-[#14bcff] to-[#224aff] text-transparent bg-clip-text">
             Don’t miss a{" "}
               <span className="w-full h-full relative">
                 <div
                   ref={beatBlur}
-                  className="bg-gradient-to-b scale-0 from-purple-400 via-blue-600 to-[#224aff] opacity-0 z-[-1] absolute top-0 left-0 w-[15vw] translate-x-[-15%] blur-md h-full"
+                  className="bg-gradient-to-b scale-0 from-purple-400 via-blue-600 to-[#224aff] opacity-0 z-[-1] absolute top-0 left-0 w-[15vw] translate-x-[-15%] blur-md max-md:hidden h-full"
                 ></div>
                 <span
                   ref={beatText}
@@ -113,7 +113,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="paragraph hero-text ">
+            <p className="paragraph hero-text max-md:w-[80%] max-sm:w-full max-md:text-center leading-[1]">
               Keikku, our next generation digital stethoscope
             </p>
           </div>

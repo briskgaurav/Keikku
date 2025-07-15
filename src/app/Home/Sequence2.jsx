@@ -54,12 +54,14 @@ export default function Sequence2() {
 
     const aspectRatio = images[0].naturalWidth / images[0].naturalHeight;
     const isMobile = window.innerWidth <= 768;
-    canvas.width = isMobile ? window.innerWidth * 0.9 : window.innerWidth * 0.6;
+    const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+    canvas.width = isMobile ? window.innerWidth * 0.9 : isTablet ? window.innerWidth * 0.75 : window.innerWidth * 0.6;
     canvas.height = canvas.width / aspectRatio;
 
     const handleResize = () => {
       const newIsMobile = window.innerWidth <= 768;
-      canvas.width = newIsMobile ? window.innerWidth * 1.0 : window.innerWidth * 0.7;
+      const newIsTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+      canvas.width = newIsMobile ? window.innerWidth * 1.0 : newIsTablet ? window.innerWidth * 0.75 : window.innerWidth * 0.7;
       canvas.height = canvas.width / aspectRatio;
       render();
     };
@@ -106,7 +108,7 @@ export default function Sequence2() {
     <div id="Sequence2" className="h-screen overflow-hidden -mt-[100vh] absolute z-[999] opacity-0 top-0 right-0 w-full">
       <canvas 
         ref={canvasRef} 
-        className="w-[68vw] h-auto max-sm:w-[200vw] object-contain translate-y-[25%] max-sm:translate-y-[55%] translate-x-[43%] max-sm:translate-x-[-8%]" 
+        className="w-[68vw] h-auto max-md:w-[145vw] max-sm:w-[200vw] object-contain translate-y-[25%] max-md:translate-y-[50%] max-sm:translate-y-[55%] translate-x-[43%] max-md:translate-x-[3%] max-sm:translate-x-[-8%]" 
       />
     </div>
   );

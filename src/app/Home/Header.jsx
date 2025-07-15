@@ -19,8 +19,8 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="w-full h-fit py-[3.5vw] max-sm:py-[10vw] flex items-center justify-center">
-      <div className="w-[10.5vw] max-md:w-[15vw] max-sm:w-[38vw] header h-fit">
+    <div className="w-full h-fit py-[3.5vw] max-md:pt-[10vw]  max-sm:py-[10vw]  flex items-center justify-center">
+      <div className="w-[10.5vw] max-sm:w-[38vw] max-md:w-[35vw] header h-fit">
         <svg viewBox="0 0 165 36" className="w-full h-full object-contain">
           <g className="logo">
             <path
