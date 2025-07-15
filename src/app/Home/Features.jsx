@@ -28,7 +28,7 @@ export default function Features() {
         scrollTrigger: {
           trigger: "#features",
           start: "top top",
-          end: isMobile ? "+4000 top" :  "+7000 top",
+          end: isMobile ? "+4000 top" : "+7000 top",
           // markers: true,
           pin: true,
           scrub: true,
@@ -117,6 +117,7 @@ export default function Features() {
           >
             <div className="h-full overflow-hidden rounded-full w-full">
               <video
+                aria-hidden="true"
                 playsInline
                 src={item.video}
                 autoPlay
@@ -145,6 +146,7 @@ export default function Features() {
                 autoPlay
                 muted
                 loop
+                aria-hidden="true"
                 preload="auto"
                 loading="lazy"
                 playsInline

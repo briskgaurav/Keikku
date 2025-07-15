@@ -87,7 +87,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="backdrop-blur-[4px] hover:bg-[#2f3247] hover:text-white transition-all duration-300 bg-background/20 flex items-center justify-center border-zinc-700/50 border px-4 sm:px-[1.5vw] max-sm:px-[6vw] py-2 sm:py-[.9vw] max-sm:py-[3.5vw] rounded-full cursor-pointer">
-        <p className="text-sm sm:text-[.8vw] tracking-wide whitespace-nowrap">Contact us</p>
+        <p className="text-sm sm:text-[.8vw] text-white tracking-wide whitespace-nowrap">Contact us</p>
       </div>
     </div>
   );

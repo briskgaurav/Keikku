@@ -115,6 +115,7 @@ export default function Swiper() {
               <SwiperSlide className="cursor-pointer" key={index}>
                 <div className="rounded-[1.5vw] max-sm:h-fit max-md:h-fit max py-[10vw] h-[90vh] w-full flex items-center justify-center overflow-hidden">
                   <iframe
+                    title="video"
                     src={`https://player.vimeo.com/video/${id}?controls=1&autoplay=0&muted=0&loop=0`}
                     frameBorder="0"
                     allow="fullscreen; picture-in-picture"
