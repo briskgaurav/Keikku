@@ -1,5 +1,5 @@
 "use client"
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import Hero from "./Home/Hero";
 import Sequence from "./Home/Sequence";
@@ -9,6 +9,7 @@ import Info from "./Home/Info";
 import UseMobile from "./Hooks/IsMobile";
 import UseTablet from "./Hooks/UseTablet";
 import InnovationTablet from "./Home/InnovationTablet";
+import imagesLoaded from "imagesloaded";
 
 // Lazy load components that appear below the fold
 const Experience = lazy(() => import("./Home/Experience"));
@@ -25,34 +26,47 @@ const Sequence2 = lazy(() => import("./Home/Sequence2"));
 export default function Page() {
   const isMobile = UseMobile();
   const isTablet = UseTablet();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const images = document.querySelectorAll("img");
+    imagesLoaded(images, () => {
+      setIsLoaded(true);
+    });
+  }, [])
+  
 
   return (
     <>
-      <div className="h-fit relative w-full">
-        <Sequence />
-        <Navbar />
-        <Hero />
-        <Features />
-        <div className="relative h-fit w-full">
+      {isLoaded && (
+        <div className="h-fit relative w-full">
+          <div className="h-fit relative w-full">
+            <Sequence />
+            <Navbar />
+            <Hero />
+            <Features />
+            <div className="relative h-fit w-full">
+              <Suspense fallback={null}>
+                <Sequence2 />
+              </Suspense>
+            </div>
+          </div>
+
+          <MeetKeikku />
+          <Info />
+          
           <Suspense fallback={null}>
-            <Sequence2 />
+            <Experience />
+            <Swiper />
+            <BuildFromTheGround />
+            <Innovation />
+            <Innovation2 />
+            {isMobile ? <Innovation3Mobile /> : isTablet ? <InnovationTablet /> : <Innovation3 />}
+            <DiscoverOurApp />
+            <Footer />
           </Suspense>
         </div>
-      </div>
-
-      <MeetKeikku />
-      <Info />
-      
-      <Suspense fallback={null}>
-        <Experience />
-        <Swiper />
-        <BuildFromTheGround />
-        <Innovation />
-        <Innovation2 />
-        {isMobile ? <Innovation3Mobile /> : isTablet ? <InnovationTablet /> : <Innovation3 />}
-        <DiscoverOurApp />
-        <Footer />
-      </Suspense>
+      )}
     </>
   );
 }
