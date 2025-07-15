@@ -23,6 +23,8 @@ export default function Sequence() {
   const canvasRef = useRef(null);
   const [images, setImages] = useState([]);
   const frame = useRef({ current: 0 });
+  const isMobile = window.innerWidth <= 768;
+  const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
 
   // 🖼️ Preload images
   useEffect(() => {
@@ -158,13 +160,15 @@ export default function Sequence() {
         className="w-[22vw] max-md:w-[50vw] max-sm:w-[70vw] translate-y-[10%] max-md:translate-y-[8%] max-sm:translate-y-[5%] scale-95 h-auto object-contain"
       />
       <div className="absolute max-sm:hidden max-md:blur-[10vw] top-1/2 blurBg translate-y-[70%] left-1/2 -translate-x-1/2 max-md:translate-y-[100%] max-sm:translate-y-[150%] w-[50%] max-md:w-[65%] max-sm:w-[80%] h-[20%] blur-[5vw] max-sm:blur-[20vw] z-[-1] bg-blue-500/50"></div>
-
-      <div
-        id="pulse"
-        className="w-[14.5vw] max-md:w-[25vw] max-md:hidden max-sm:w-[40vw] hidden scale-0 h-[14.5vw] max-md:h-[25vw] max-sm:h-[40vw] bg-blue-700/20 rounded-full absolute top-[76%] max-md:top-[80%] max-sm:top-[83%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
-      >
-        <div className="w-[50%] h-[50%] bg-blue-700/20 rounded-full"></div>
-      </div>
+  
+      {!isMobile && !isTablet && (
+        <div
+          id="pulse"
+          className="w-[14.5vw] hidden scale-0 h-[14.5vw] bg-blue-700/20 rounded-full absolute top-[76%] left-1/2 items-center justify-center -translate-x-[50%] -translate-y-1/2 z-[999]"
+        >
+          <div className="w-[50%] h-[50%] bg-blue-700/20 rounded-full"></div>
+        </div>
+      )}
     </div>
   );
 }

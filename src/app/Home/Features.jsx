@@ -111,7 +111,7 @@ export default function Features() {
         {data.map((item, index) => (
           <div
             key={index}
-            className={`p-[1vw] max-md:p-[2vw] max-sm:p-[3vw] scale-[.9] feature-card opacity-0 max-md:opacity-100 py-[1.5vw] bg-white w-[12.5%] max-md:w-[30%] max-sm:w-[30%] rounded-full translate-y-[200%] max-md:translate-y-[200%] flex items-center justify-center ${
+            className={`p-[1vw] max-sm:hidden max-md:hidden max-md:p-[2vw] max-sm:p-[3vw] scale-[.9] feature-card opacity-0 max-md:opacity-100 py-[1.5vw] bg-white w-[12.5%] max-md:w-[30%] max-sm:w-[30%] rounded-full translate-y-[200%] max-md:translate-y-[200%] flex items-center justify-center ${
               index === 1 ? "translate-y-[100%]" : ""
             } gap-[1vw] h-[44vh] max-md:h-[30vh] max-sm:h-[25vh] flex-col`}
           >
