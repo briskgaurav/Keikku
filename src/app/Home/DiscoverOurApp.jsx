@@ -85,7 +85,7 @@ export default function DiscoverOurApp() {
           start: "-50% top",
           end: "bottom top",
           // scrub: true,
-          markers: true,
+          // markers: true,
         },
       })
       tl.to("#header-keikku", {
