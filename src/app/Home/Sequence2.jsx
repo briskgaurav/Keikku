@@ -89,7 +89,7 @@ export default function Sequence2() {
         scrollTrigger: {
           trigger: "#Sequence2",
           start: "top top",
-          end: "+=130%",
+          end: "+=150%",
           scrub: true,
           pin: true,
           invalidateOnRefresh: true,

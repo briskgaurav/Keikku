@@ -22,7 +22,7 @@ const LenisSmoothScroll = () => {
       root
       options={{
         autoRaf: false,
-        smoothTouch: true, // Enable smooth scrolling on mobile
+        // smoothTouch: true, // Enable smooth scrolling on mobile
         duration: 1.2,
       }}
       ref={lenisRef}

@@ -82,9 +82,10 @@ export default function DiscoverOurApp() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".discover-app-card",
-          start: "-30% top",
+          start: "-50% top",
           end: "bottom top",
           // scrub: true,
+          markers: true,
         },
       })
       tl.to("#header-keikku", {
